@@ -47,3 +47,5 @@ Temporary Items
 insert.sql
 data.json
 META-INF
+DBConfig.java
+DBConfig.class
