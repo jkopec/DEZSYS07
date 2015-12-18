@@ -45,3 +45,5 @@ Temporary Items
 # Mine
 .remote-sync.json
 insert.sql
+data.json
+META-INF
