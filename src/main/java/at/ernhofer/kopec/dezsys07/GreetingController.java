@@ -48,4 +48,18 @@ public class GreetingController {
         return "iknow_post";
     }
     
+    @RequestMapping(value = {"/iknow","/iknow/get"}, method = RequestMethod.POST, produces = "text/html")
+    public String penis(@RequestParam(value = "suchbegriff", defaultValue = "") String suchbegriff, Model model) {
+        
+    	if(suchbegriff.equals("")){
+    		List<Data> dataRecords = datarepository.findAll();
+        	model.addAttribute("suchbegriff", dataRecords);
+    	}else{
+    		List<Data> dataRecords = datarepository.findBySuchbegriff(suchbegriff);
+            model.addAttribute("suchbegriff", dataRecords);
+    	}
+
+        return "iknow_get";
+    }
+    
 }
