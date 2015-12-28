@@ -1,3 +1,7 @@
+$(function(){
+	$('#suchbegriff').focus().val($("#suchbegriff").val());
+});
+
 window.onpageshow = function(evt) {
     // If persisted then it is in the page cache, force a reload of the page.
     if (evt.persisted) {
@@ -6,15 +10,25 @@ window.onpageshow = function(evt) {
     }
 };
 
-function iknowGet() {
-    window.location.href = "/iknow/get";
+function iknow() {
+    window.location.href = "/iknow";
 }
-function iknowPost() {
-    window.location.href = "/iknow/post";
+function edit() {
+    window.location.href = "/iknow/edit";
 }
-function iknowPut() {
-    window.location.href = "/iknow/put";
-}
-function iknowDelete() {
-    window.location.href = "/iknow/delete";
+
+function removeRecord(id) {
+    $.ajax({
+        url: "/data/" + id,
+        contentType: "application/json",
+        processData: false,
+        type: 'DELETE',
+        success: function (data) {
+            alert('Deleted data successfully!');
+            $("#" + id).hide();
+        },
+        error: function (data) {
+            alert('Data not deleted: '  + data.responseJSON.message);
+        }
+    });
 }

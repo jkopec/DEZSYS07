@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>iKnow Systems</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/redirects.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<header class="col-lg-12">
+    	<h1>iKnow Systems <small>Datensätze hinzufügen oder bearbeiten</small> </h1> 
+  	</header>
+    
+    <div class="col-lg-6">
+	    <form>
+	    	<div class="input-group">
+	          	<input th:value="${request}" type="text" id="suchbegriff" class="form-control" placeholder="Suchbegriff hier eingeben..." />
+	          	<span class="input-group-btn">
+	            	<button class="btn btn-success" type="submit">Go!</button>
+	          	</span>
+	    	</div>
+	    </form>
+    </div>
+      
+      <div class="col-lg-6">
+        <ul class="nav nav-tabs nav-justified">
+          <li>
+            <a onclick="iknow()">Übersicht</a>
+          </li>
+          <li class="active">
+            <a onclick="edit()">Bearbeiten / Hinzufügen</a>
+          </li>
+        </ul>
+      </div>
+      
+    
+    <div class="col-lg-12">
+    
+      <form th:id="${data?.id}">
+      
+        <div class="form-group">
+          <label class="control-label">Suchbegriff</label>
+          <div class="controls">
+            <input th:value="${data?.suchbegriff}" type="text" id="suchbegriff" class="form-control" />
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="control-label">Beschreibung</label>
+          <div class="controls">
+            <textarea th:text="${data?.beschreibung}" class="form-control" id="beschreibung" rows="10"></textarea>
+          </div>
+        </div>
+        
+        <button type="reset" class="btn btn-default">
+          <span class="glyphicon glyphicon-remove"></span>
+          Felder leeren
+        </button>
+        
+      
+        <button th:if="${data}" type="button" class="btn btn-info pull-right edit">
+          <span class="glyphicon glyphicon-pencil"></span>
+          Datensatz bearbeiten
+        </button>
+      
+       	<button th:unless="${data}" type="button" class="btn btn-success pull-right add">
+          <span class="glyphicon glyphicon-plus"></span>
+          Neuen Datensatz hinzufügen
+        </button>
+     
+      </form>
+      
+      <script>
+	      $('.btn.add').click(function() {
+	          var data = {
+	              suchbegriff: $("#suchbegriff").val(),
+	              beschreibung: $("#beschreibung").val()
+	          };
+	          $.ajax({
+	              url: "/data",
+	              data: JSON.stringify(data),
+	              contentType: "application/json",
+	              processData: false,
+	              type: 'POST',
+	              success: function (data) {
+	                  alert('Created record successfully!');
+	              },
+	              error: function (data) {
+	                  alert('Record not created: ' + data.responseJSON.message);
+	              }
+	          });
+	      });
+	      
+	      $('.btn.edit').click(function() {
+	          var data = {
+	              suchbegriff: $("#suchbegriff").val(),
+	              beschreibung: $("#beschreibung").val()
+	          };
+	          $.ajax({
+	              url: "/data/"+$("form").attr("id"),
+	              data: JSON.stringify(data),
+	              contentType: "application/json",
+	              processData: false,
+	              type: 'PUT',
+	              success: function (data) {
+	                  alert('Created record successfully!');
+	              },
+	              error: function (data) {
+	                  alert('Record not created: ' + data.responseJSON.message);
+	              }
+	          });
+	      });
+      </script>
+      
+    </div>
+  
+  </body>
+
+</html>

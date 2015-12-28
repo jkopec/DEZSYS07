@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>iKnow Systems</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/redirects.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<header class="col-lg-12">
+    	<h1>iKnow Systems <small>Suchbar zum Filtern der Suchbegriffe verwenden</small> </h1> 
+  	</header>
+    
+    <div class="col-lg-6">
+	    <form>
+	    	<div class="input-group">
+	          	<input th:value="${request}" type="text" id="suchbegriff" class="form-control" placeholder="Suchbegriff hier eingeben..." />
+	          	<span class="input-group-btn">
+	            	<button class="btn btn-success" type="submit">Go!</button>
+	          	</span>
+	    	</div>
+	    </form>
+    </div>
+      
+      <div class="col-lg-6">
+        <ul class="nav nav-tabs nav-justified">
+          <li class="active">
+            <a onclick="iknow()">Übersicht</a>
+          </li>
+          <li>
+            <a onclick="edit()">Bearbeiten / Hinzufügen</a>
+          </li>
+        </ul>
+      </div>
+      
+    
+    <div class="col-lg-12">
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th>Suchbegriff</th>
+            <th>Beschreibung</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <th:block th:each="data : ${suchbegriff}">
+			   <tr th:id="${data.id}">
+			       <td th:text="${data.suchbegriff}"></td>
+			       <td th:text="${data.beschreibung}"></td>
+			       <td>
+			       	<button class="btn btn-default edit">
+			       		<span class="glyphicon glyphicon-pencil"></span>
+			       	</button>
+			       </td>
+			       <td>
+			       	<button class="btn btn-danger remove">
+			       		<span class="glyphicon glyphicon-remove"></span>
+			       	</button>
+			       </td>
+			   </tr>
+		  </th:block>
+        </tbody>
+      </table>
+    </div>
+    
+    <script>
+	      $('form').submit(function(e) {
+	          e.preventDefault();
+	          var suchbegriff = $("#suchbegriff").val();
+	          
+	          if(suchbegriff != ""){
+	        	  window.location.href = "/iknow?suchbegriff="+suchbegriff;
+	          }else{
+	        	  window.location.href = "/iknow";
+	          }
+	      });
+	      
+	      $( "#suchbegriff" ).keyup(function() {
+			  var suchbegriff = $("#suchbegriff").val();
+	          
+	          if(suchbegriff != ""){
+	        	  window.location.href = "/iknow?suchbegriff="+suchbegriff;
+	          }else{
+	        	  window.location.href = "/iknow";
+	          }
+	    	});
+	     
+	      $(".btn.remove").click(function(){
+	    	  var id = $(this).closest("tr").attr("id");
+	    	  removeRecord(id);
+	      });
+	      
+	      $(".btn.edit").click(function(){
+	    	  var id = $(this).closest("tr").attr("id");
+	    	  window.location.href = "/iknow/edit?id="+id;
+	      });
+      </script>
+    
+  </body>
+
+</html>
