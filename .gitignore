@@ -49,3 +49,4 @@ data.json
 META-INF
 DBConfig.java
 DBConfig.class
+.classpath
