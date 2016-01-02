@@ -5,6 +5,7 @@ import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+
 import at.ernhofer.kopec.dezsys07.DataRepository;
 
 /**
@@ -42,7 +43,7 @@ public class DataEndpoint {
     @ResponsePayload
     public GetDataResponse getDataRecord(@RequestPayload GetDataRequest request) {
         GetDataResponse response = new GetDataResponse();
-        response.setData(dataRepository.findBySuchbegriff(request.getSuchbegriff()));
+        response.setData(dataRepository.findBySuchbegriffContainingIgnoreCase(request.getSuchbegriff()));
 
         return response;
     }
