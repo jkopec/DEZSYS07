@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>iKnow Systems</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/redirects.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+  <body>
+    <div class="col-md-6 col-md-push-3">
+      <h1 style="text-align:center;font-size:100px;">Oops!</h1>
+      <h3 style="text-align:center;margin-top:50px;">Error 404 - File not found</h3>
+      <p style="text-align:center;">
+        Sorry, the file you are trying to access has been moved or does not exist!
+      </p>
+      <form style="text-align:center">
+        <a class="btn btn-success" style="width:130px;margin-right:3px;" onClick="history.go(-1);return true;">Go Back</a>
+        <a class="btn btn-default" style="width:130px;margin-left:3px;" onClick="alert('Thank you for your support!\nA report has been sent to our team. :)');">Contact Support</a>
+      </form>
+    </div>
+  </body>
+</html>
