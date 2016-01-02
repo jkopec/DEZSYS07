@@ -27,24 +27,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/andie/.m2/repository/org/springframework/ws/spring-ws-core/2.2.3.RELEASE/spring-ws-core-2.2.3.RELEASE.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="org.springframework.ws"/>
-			<attribute name="maven.artifactId" value="spring-ws-core"/>
-			<attribute name="maven.version" value="2.2.3.RELEASE"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/andie/.m2/repository/org/springframework/ws/spring-xml/2.2.3.RELEASE/spring-xml-2.2.3.RELEASE.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="org.springframework.ws"/>
-			<attribute name="maven.artifactId" value="spring-xml"/>
-			<attribute name="maven.version" value="2.2.3.RELEASE"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="commons-cli-1.3.1/commons-cli-1.3.1.jar"/>
+	<classpathentry kind="lib" path="commons-cli-1.3.1/commons-cli-1.3.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
