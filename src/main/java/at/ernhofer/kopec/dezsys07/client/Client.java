@@ -8,12 +8,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 
-/**
- * This class launches the SOAP client
- *
- * @author Andreas Ernhofer & Jakub Kopec
- * @version 20151219
- */
 public class Client {
 
     public static String NAME;

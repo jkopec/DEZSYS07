@@ -4,20 +4,8 @@ import org.apache.commons.cli.*;
 
 import static at.ernhofer.kopec.dezsys07.client.Client.*;
 
-/**
- * Processes the CLI input using Apache Commons CLI
- *
- * @author Andreas Ernhofer & Jakub Kopec
- * @version 20151223
- */
 public class CLIProcessor {
 
-    /**
-     * Takes the application arguments and converts them
-     *
-     * @param args The application arguments
-     * @throws ParseException Will be thrown if anything goes wrong while parsing
-     */
     public void parseArguments(String[] args) throws ParseException {
         CommandLineParser parser = new DefaultParser();
         Options options = getOptions();
@@ -45,11 +33,6 @@ public class CLIProcessor {
         }
     }
 
-    /**
-     * Returns the valid options for the argument parsing
-     *
-     * @return A list of valid options
-     */
     public Options getOptions() {
 
         Options options = new Options();
@@ -77,9 +60,6 @@ public class CLIProcessor {
         return options;
     }
 
-    /**
-     * Creates a Unix like help page that will be shown if the user enters invalid parameters
-     */
     public void printHelp() {
         String header = "Client application to search the web service for entries";
         String footer = "";

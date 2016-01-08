@@ -10,6 +10,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "data", path = "data")
 public interface DataRepository extends MongoRepository<Data, String> {
 
-	List<Data> findBySuchbegriffContainingIgnoreCase(@Param("suchbegriff") String suchbegriff);
+	List<Data> findTop100BySuchbegriffContainingIgnoreCase(@Param("suchbegriff") String suchbegriff);
 	Data findById(@Param("id") String id);
 }

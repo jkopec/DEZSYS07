@@ -8,13 +8,6 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import at.ernhofer.kopec.dezsys07.DataRepository;
 
-/**
- * The endpoint for the SOA service. <br>
- * Request are mapped to their related responses in this class
- *
- * @author Andreas Ernhofer & Jakub Kopec
- * @version 20151219
- */
 @Endpoint
 public class DataEndpoint {
     public static final String NAMESPACE_URI = "http://at/ernhofer/kopec/dezsys07/soa";
@@ -31,19 +24,11 @@ public class DataEndpoint {
         this.dataRepository = dataRepository;
     }
 
-    /**
-     * Maps the DataRecord search request. <br>
-     * To be exact, a request with a GatDataRecord request payload will be mapped
-     * to a related response.
-     *
-     * @param request The SOAP Request
-     * @return A response with the first 100 entries
-     */
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getDataRequest")
     @ResponsePayload
     public GetDataResponse getDataRecord(@RequestPayload GetDataRequest request) {
         GetDataResponse response = new GetDataResponse();
-        response.setData(dataRepository.findBySuchbegriffContainingIgnoreCase(request.getSuchbegriff()));
+        response.setData(dataRepository.findTop100BySuchbegriffContainingIgnoreCase(request.getSuchbegriff()));
 
         return response;
     }

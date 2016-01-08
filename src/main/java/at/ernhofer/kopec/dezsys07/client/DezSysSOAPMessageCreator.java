@@ -2,12 +2,6 @@ package at.ernhofer.kopec.dezsys07.client;
 
 import javax.xml.soap.*;
 
-/**
- * The creates the SOAP request envelope with the required information
- *
- * @author Andreas Ernhofer & Jakub Kopec
- * @version 20151223
- */
 public class DezSysSOAPMessageCreator implements SOAPMessageCreator {
 
     private String name;
@@ -18,9 +12,6 @@ public class DezSysSOAPMessageCreator implements SOAPMessageCreator {
         this.name = name;
     }
 
-    /**
-     * @see SOAPMessageCreator#create
-     */
     @Override
     public SOAPMessage create() throws SOAPException {
         MessageFactory messageFactory = MessageFactory.newInstance();

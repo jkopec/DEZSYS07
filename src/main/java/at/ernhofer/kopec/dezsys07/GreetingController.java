@@ -25,14 +25,9 @@ public class GreetingController {
     	
     	model.addAttribute("request",suchbegriff);
         
-    	if(suchbegriff.equals("")){
-    		List<Data> dataRecords = datarepository.findAll();
-        	model.addAttribute("suchbegriff", dataRecords);
-    	}else{
-    		List<Data> dataRecords = datarepository.findBySuchbegriffContainingIgnoreCase(suchbegriff);
-            model.addAttribute("suchbegriff", dataRecords);
-    	}
-
+		List<Data> dataRecords = datarepository.findTop100BySuchbegriffContainingIgnoreCase(suchbegriff);
+	    model.addAttribute("suchbegriff", dataRecords);
+    	
         return "iknow";
     }
     

@@ -15,22 +15,9 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.StringReader;
 import java.io.StringWriter;
 
-/**
- * Utility methods for the Client
- *
- * @author Andreas Ernhofer & Jakub Kopec
- * @version 20151223
- */
+
 public class ClientUtils {
 
-    /**
-     * Converts a existing SOAP message into its String representation
-     *
-     * @param message The message that will be converted
-     * @param beautify Beautify the output String or not
-     * @return The converted String
-     * @throws Exception Will be thrown if any exceptions occur during the process
-     */
     public static String soapMessageToString(SOAPMessage message, boolean beautify) throws Exception {
         String output;
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -49,9 +36,7 @@ public class ClientUtils {
             DOMImplementationLS impl = (DOMImplementationLS) registry.getDOMImplementation("LS");
             LSSerializer serializer = impl.createLSSerializer();
 
-            // Beautify the XML-Document
             serializer.getDomConfig().setParameter("format-pretty-print", Boolean.TRUE);
-            // Keep the declaration
             serializer.getDomConfig().setParameter("xml-declaration", keepDeclaration);
 
             output = serializer.writeToString(document);

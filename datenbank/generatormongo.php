@@ -2,9 +2,9 @@
     //Die Datei, in die die SQL-Befehle geschrieben werden sollen
     $insertFile = fopen("data.json", "w");
     //Variablen für die Anzahlen
-    $anzahl = 10;
+    $anzahl = 1000000;
     $laengesuchbegriff = array("min" => 10, "max" => 20);
-    $laengebeschreibung = array("min" => 100, "max" => 150);
+    $laengebeschreibung = array("min" => 100, "max" => 120);
 
     //Zeichen aus denen ein Suchbegriff zusammengesetzt wird
     $alphasuch = "abcdefghijklmnopqrstuvwxyz" .
